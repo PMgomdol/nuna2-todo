@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conu Todo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-top">
+        <h1 class="logo">Conu <span>Todo</span></h1>
+        <div class="date" id="today-date"></div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number" id="total-count">0</span>
+          <span class="stat-label">전체</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" id="done-count">0</span>
+          <span class="stat-label">완료</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" id="remain-count">0</span>
+          <span class="stat-label">남은 일</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="input-section">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="todo-input"
+          class="todo-input"
+          placeholder="새로운 할일을 입력하세요..."
+          maxlength="80"
+          autocomplete="off"
+        />
+        <button class="add-btn" id="add-btn" aria-label="추가">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="active">진행 중</button>
+      <button class="filter-btn" data-filter="done">완료</button>
+    </div>
+
+    <main class="todo-list-container">
+      <ul class="todo-list" id="todo-list"></ul>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="27" stroke="#e2e8f0" stroke-width="2"/>
+            <path d="M18 28h20M28 18v20" stroke="#cbd5e1" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="empty-title">할일이 없어요</p>
+        <p class="empty-sub">위에서 새로운 할일을 추가해보세요</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <button class="clear-btn" id="clear-done-btn">완료된 항목 모두 삭제</button>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
