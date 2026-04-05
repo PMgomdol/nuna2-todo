@@ -55,6 +55,8 @@ const dateBadge    = document.getElementById("date-todo-count");
 const now = new Date();
 todayChip.textContent = `${now.getMonth() + 1}월 ${now.getDate()}일`;
 injectKeyframe();
+renderCalendar();   // 백엔드 응답 전에도 캘린더 먼저 표시
+renderTodos();
 fetchTodos();
 
 /* ── 이벤트 ── */
@@ -96,8 +98,12 @@ async function fetchTodos() {
     renderTodos();
     renderStats();
   } catch (err) {
-    showToast("서버에 연결할 수 없어요", "error");
-    console.error(err);
+    showToast("서버에 연결할 수 없어요 — 백엔드를 확인해주세요", "error");
+    console.error("[fetchTodos 오류]", err);
+    /* 실패해도 캘린더·목록 유지 (빈 상태로) */
+    renderCalendar();
+    renderTodos();
+    renderStats();
   } finally {
     setLoading(false);
   }
