@@ -1,5 +1,5 @@
 /* ── API 설정 ── */
-const API_BASE = "http://localhost:5000/todos";
+const API_BASE = "https://conu-2-backend.up.railway.app/api/todos";
 
 /* ── 유틸 ── */
 function toDateStr(d) {
